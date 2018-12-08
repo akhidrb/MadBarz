@@ -7,16 +7,16 @@
 </head>
 
 <body>
-<h1>Design your Exercise!</h1>
+<h1>Design your Workout!</h1>
 
-<form method="POST" th:object="${exercise}">
+<form method="POST" th:object="${workout}">
 
     <div class="grid">
-        <div class="musclegroups-group" id="wraps">
-            <h3>Designate your Muscle Groups:</h3>
-            <div th:each="musclegroup : ${musclegroups}">
-                <input name="muscleGroups" type="checkbox" th:value="${musclegroup.id}" />
-                <span th:text="${musclegroup.name}">Muscle Group</span><br/>
+        <div class="exercises-group">
+            <h3>Designate your Exercise:</h3>
+            <div th:each="exercise : ${exercises}">
+                <input name="exercises" type="checkbox" th:value="${exercise.id}" />
+                <span th:text="${exercise.name}">Exercise</span><br/>
             </div>
         </div>
     </div>
@@ -28,5 +28,6 @@
         <button>Add Exercise</button>
     </div>
 </form>
+
 </body>
 </html>

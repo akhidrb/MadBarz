@@ -15,19 +15,15 @@ import java.util.Map;
 @Repository
 public class JdbcExerciseRep implements ExerciseRep {
 
-    private SimpleJdbcInsert exerciseInserter;
-    private SimpleJdbcInsert exerciseMuscleInserter;
+    private SimpleJdbcInsert exerciseInsert;
     private ObjectMapper objectMapper;
     private JdbcTemplate jdbc;
 
     @Autowired
     public JdbcExerciseRep(JdbcTemplate jdbc) {
-        this.exerciseInserter = new SimpleJdbcInsert(jdbc)
+        this.exerciseInsert = new SimpleJdbcInsert(jdbc)
                 .withTableName("Exercise")
                 .usingGeneratedKeyColumns("id");
-
-        this.exerciseMuscleInserter = new SimpleJdbcInsert(jdbc)
-                .withTableName("Exercise_MuscleGroup");
         this.objectMapper = new ObjectMapper();
         this.jdbc = jdbc;
     }
@@ -64,7 +60,7 @@ public class JdbcExerciseRep implements ExerciseRep {
         Map<String, Object> values =
                 objectMapper.convertValue(exercise, Map.class);
         long exerciseId =
-                exerciseInserter
+                exerciseInsert
                         .executeAndReturnKey(values)
                         .longValue();
         return exerciseId;
@@ -74,10 +70,7 @@ public class JdbcExerciseRep implements ExerciseRep {
                                       int rowNum) throws SQLException {
         Long id = rs.getLong("id");
         String name = rs.getString("name");
-        Exercise exercise = new Exercise();
-        exercise.setId(id);
-        exercise.setName(name);
-        return exercise;
+        return new Exercise(id, name);
     }
 
 

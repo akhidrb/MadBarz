@@ -10,4 +10,10 @@ public interface WorkoutRep {
 
     Workout save(Workout workout);
 
+    String queryWorkout = "Select w.id, w.name, wd.rounds," +
+            "wd.exerciserest, wd.setrest " +
+            "from Workout w " +
+            "left join workout_data wd " +
+            "on w.id=wd.id";
+
 }

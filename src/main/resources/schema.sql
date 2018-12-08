@@ -25,8 +25,7 @@ ALTER TABLE Exercise_MuscleGroup
 ADD FOREIGN KEY (muscleGroupID) REFERENCES MuscleGroup(id); 
 
 create table if not exists Workout_Exercise (
-  id identity,
-  workoutID bigint not null,
+  workoutId bigint not null,
   exerciseId bigint not null
 );
 
@@ -36,8 +35,11 @@ ALTER TABLE Workout_Exercise
 ADD FOREIGN KEY (exerciseId) REFERENCES Exercise(id); 
 
 create table if not exists Workout_Data (
-	id identity,
+	id bigint not null,
 	rounds bigint,
-	exerciseRestSeconds bigint,
-	setRestSeconds bigint
+	exerciserest bigint,
+	setrest bigint
 );
+
+ALTER TABLE Workout_Data
+ADD FOREIGN KEY (id) REFERENCES Workout(id);
