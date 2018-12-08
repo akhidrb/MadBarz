@@ -7,7 +7,5 @@ public interface MuscleGroupRep {
 	Iterable<MuscleGroup> findAll();
 	
 	MuscleGroup findById(Long id);
-	
-	MuscleGroup save(MuscleGroup muscleGroup);
-	
+
 }

@@ -1,9 +1,9 @@
-create table if not exists Exercise (
+create table if not exists MuscleGroup (
   id identity,
   name varchar(25) not null
 );
 
-create table if not exists MuscleGroup (
+create table if not exists Exercise (
   id identity,
   name varchar(25) not null
 );

@@ -15,7 +15,7 @@
         <div class="musclegroups-group" id="wraps">
             <h3>Designate your Exercise:</h3>
             <div th:each="musclegroup : ${musclegroups}">
-                <input name="musclegroups" type="checkbox" th:value="${musclegroup.id}" />
+                <input name="muscleGroups" type="checkbox" th:value="${musclegroup.id}" />
                 <span th:text="${musclegroup.name}">Muscle Group</span><br/>
             </div>
         </div>

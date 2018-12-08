@@ -1,7 +1,6 @@
 package com.example.madbarzapp.models;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 @Data
 public class MuscleGroup {

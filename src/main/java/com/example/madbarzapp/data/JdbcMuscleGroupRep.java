@@ -30,14 +30,7 @@ public class JdbcMuscleGroupRep implements MuscleGroupRep {
 		String query = "Select * from MuscleGroup where id = ?";
 		return jdbc.queryForObject(query, this::mapRowToMuscleGroup, id);
 	}
-	
-	@Override
-	public MuscleGroup save(MuscleGroup muscleGroup) {
-		String query = "Insert into MuscleGroup (id, name) values (?,?)";
-		jdbc.update(query, muscleGroup.getId(), muscleGroup.getName());
-		return muscleGroup;
-	}
-	
+
 	private MuscleGroup mapRowToMuscleGroup(ResultSet rs, 
 			int rowNum) throws SQLException {
 		Long id = rs.getLong("id");
