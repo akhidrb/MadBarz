@@ -1,7 +1,6 @@
 package com.example.madbarzapp.web;
 
 import com.example.madbarzapp.data.ExerciseRep;
-import com.example.madbarzapp.data.MuscleGroupRep;
 import com.example.madbarzapp.data.WorkoutRep;
 import com.example.madbarzapp.models.Exercise;
 import com.example.madbarzapp.models.Workout;
@@ -26,7 +25,7 @@ public class DesignWorkoutController {
 
     @Autowired
     public DesignWorkoutController(WorkoutRep workoutRep,
-                                    ExerciseRep exerciseRep) {
+                                   ExerciseRep exerciseRep) {
         this.workoutRep = workoutRep;
         this.exerciseRep = exerciseRep;
     }
@@ -47,8 +46,13 @@ public class DesignWorkoutController {
     @PostMapping
     public String processDesign(Workout workout) {
         Workout saved = workoutRep.save(workout);
-        return "redirect:/";
+        return "redirect:/workout";
     }
 
 
 }
+
+
+
+
+

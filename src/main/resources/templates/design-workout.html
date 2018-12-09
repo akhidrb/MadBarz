@@ -20,14 +20,31 @@
             </div>
         </div>
     </div>
-
     <div>
-        <h3>Name your Exercise:</h3>
+        <div>
+            <h3>Rounds:</h3>
+            <input type="text" th:field="*{rounds}"/>
+        </div>
+        <div>
+            <h3>Rest between Exercises:</h3>
+            <input type="text" th:field="*{exerciseRest}"/>
+        </div>
+        <div>
+            <h3>Rest between Rounds:</h3>
+            <input type="text" th:field="*{setRest}"/>
+        </div>
+    </div>
+    <div>
+        <h3>Name your Workout:</h3>
         <input type="text" th:field="*{name}"/>
         <br/>
-        <button>Add Exercise</button>
+        <button>Add Workout</button>
     </div>
 </form>
+<br />
+<div>
+    <a href="/">Done</a>
+</div>
 
 </body>
 </html>

@@ -37,7 +37,7 @@ public class JdbcWorkoutRep implements WorkoutRep {
 
     public Workout save(Workout workout) {
         Long workoutId = saveToWorkoutDB(workout);
-//        saveToWorkoutExerciseDB(workoutId, workout);
+        saveToWorkoutExerciseDB(workoutId, workout);
         saveToWorkoutDataDB(workoutId, workout);
         return workout;
     }

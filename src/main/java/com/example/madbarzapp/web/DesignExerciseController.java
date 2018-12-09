@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/exercise")
 public class DesignExerciseController {
 
     private final MuscleGroupRep muscleGroupRep;
@@ -46,7 +46,7 @@ public class DesignExerciseController {
     @PostMapping
     public String processDesign(Exercise exercise) {
         Exercise saved = exerciseRep.save(exercise);
-        return "redirect:/workout";
+        return "redirect:/exercise";
     }
 
 
