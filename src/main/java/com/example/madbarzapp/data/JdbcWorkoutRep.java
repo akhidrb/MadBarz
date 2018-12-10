@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -27,7 +29,14 @@ public class JdbcWorkoutRep implements WorkoutRep {
     }
 
     public Iterable<Workout> findAll() {
-        return jdbc.query(queryWorkout, this::mapRowToWorkout);
+        Iterable<Workout> workouts = jdbc.query(queryWorkout, this::mapRowToWorkout);
+        for(Workout workout: workouts) {
+            Iterable<Exercise> exercises = jdbc.query(queryExercises, this::mapRowToExercise, workout.getId());
+            List<Exercise> exercisesList = new ArrayList<>();
+            exercises.forEach(exercisesList::add);
+            workout.setExercises(exercisesList);
+        }
+        return workouts;
     }
 
     public Workout findById(Long id) {
@@ -64,6 +73,13 @@ public class JdbcWorkoutRep implements WorkoutRep {
                 objectMapper.convertValue(workout, Map.class);
         return workoutInsert.executeAndReturnKey(values)
                 .longValue();
+    }
+
+    private Exercise mapRowToExercise(ResultSet rs,
+                                      int rowNum) throws SQLException {
+        Long id = rs.getLong("id");
+        String name = rs.getString("name");
+        return new Exercise(id, name);
     }
 
     private Workout mapRowToWorkout(ResultSet rs,

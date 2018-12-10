@@ -19,6 +19,12 @@
         <div th:if="${workouts}">
             <div th:each="workout : ${workouts}">
                 <span th:text="${workout.name}">Workout</span>
+                <span th:text="${workout.rounds}">Workout</span>
+                <span th:text="${workout.exerciseRest}">Workout</span>
+                <span th:text="${workout.setRest}">Workout</span>
+                <div th:each="exercise : ${workout.exercises}">
+                    <span th:text="${exercise.name}">Workout</span>
+                </div>
                 <br/>
             </div>
         </div>
