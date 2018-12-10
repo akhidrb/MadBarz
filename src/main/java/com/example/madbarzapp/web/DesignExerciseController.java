@@ -1,9 +1,9 @@
 package com.example.madbarzapp.web;
 
 import com.example.madbarzapp.data.ExerciseRep;
-import com.example.madbarzapp.data.MuscleGroupRep;
+import com.example.madbarzapp.data.MusclegroupRep;
 import com.example.madbarzapp.models.Exercise;
-import com.example.madbarzapp.models.MuscleGroup;
+import com.example.madbarzapp.models.Musclegroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +20,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/exercise")
 public class DesignExerciseController {
 
-    private final MuscleGroupRep muscleGroupRep;
+    private final MusclegroupRep muscleGroupRep;
     private final ExerciseRep exerciseRep;
 
     @Autowired
-    public DesignExerciseController(MuscleGroupRep muscleGroupRep,
+    public DesignExerciseController(MusclegroupRep muscleGroupRep,
                                     ExerciseRep exerciseRep) {
         this.muscleGroupRep = muscleGroupRep;
         this.exerciseRep = exerciseRep;
@@ -37,9 +37,9 @@ public class DesignExerciseController {
 
     @GetMapping
     public String showDesignForm(Model model) {
-        List<MuscleGroup> muscleGroupList = new ArrayList<>();
-        muscleGroupRep.findAll().forEach(muscleGroup -> muscleGroupList.add(muscleGroup));
-        model.addAttribute("musclegroups", muscleGroupList.stream().collect(Collectors.toList()));
+        List<Musclegroup> musclegroupList = new ArrayList<>();
+        muscleGroupRep.findAll().forEach(musclegroup -> musclegroupList.add(musclegroup));
+        model.addAttribute("musclegroups", musclegroupList.stream().collect(Collectors.toList()));
         return "design-exercise";
     }
 

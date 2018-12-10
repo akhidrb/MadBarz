@@ -1,4 +1,4 @@
-create table if not exists MuscleGroup (
+create table if not exists Musclegroup (
   id identity,
   name varchar(25) not null
 );
@@ -13,16 +13,16 @@ create table if not exists Workout (
   name varchar(25) not null
 );
 
-create table if not exists Exercise_MuscleGroup (
+create table if not exists Exercise_Musclegroup (
   id identity,
   exerciseId bigint not null,
   muscleGroupID bigint not null
 );
 
-ALTER TABLE Exercise_MuscleGroup
+ALTER TABLE Exercise_Musclegroup
 ADD FOREIGN KEY (exerciseId) REFERENCES Exercise(id); 
-ALTER TABLE Exercise_MuscleGroup
-ADD FOREIGN KEY (muscleGroupID) REFERENCES MuscleGroup(id); 
+ALTER TABLE Exercise_Musclegroup
+ADD FOREIGN KEY (muscleGroupID) REFERENCES Musclegroup(id);
 
 create table if not exists Workout_Exercise (
   workoutId bigint not null,

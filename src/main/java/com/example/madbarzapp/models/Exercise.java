@@ -4,12 +4,23 @@ import java.util.List;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 @Data
+@Entity
 public class Exercise {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+
 	private String name;
-	private List<MuscleGroup> muscleGroups;
+
+	@ManyToMany
+	private List<Musclegroup> musclegroups;
 
 	public Exercise() {
 	}
@@ -35,12 +46,12 @@ public class Exercise {
 		this.name = name;
 	}
 
-	public List<MuscleGroup> getMuscleGroups() {
-		return muscleGroups;
+	public List<Musclegroup> getMusclegroups() {
+		return musclegroups;
 	}
 
-	public void setMuscleGroups(List<MuscleGroup> muscleGroups) {
-		this.muscleGroups = muscleGroups;
+	public void setMusclegroups(List<Musclegroup> musclegroups) {
+		this.musclegroups = musclegroups;
 	}
 
 }

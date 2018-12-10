@@ -2,13 +2,18 @@ package com.example.madbarzapp.models;
 
 import lombok.Data;
 
-@Data
-public class MuscleGroup {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Data
+@Entity
+public class Musclegroup {
+
+	@Id
 	private final Long id;
 	private final String name;
 
-	public MuscleGroup(Long id, String name) {
+	public Musclegroup(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}

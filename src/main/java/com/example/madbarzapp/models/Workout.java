@@ -4,14 +4,24 @@ import java.util.List;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 @Data
+@Entity
 public class Workout {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String name;
 	private Long rounds;
 	private Long exerciseRest;
 	private Long setRest;
+
+	@ManyToMany
 	private List<Exercise> exercises;
 
 	public Workout() {
