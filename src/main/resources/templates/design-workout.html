@@ -13,11 +13,17 @@
 
     <div class="grid">
         <div class="exercises-group">
-            <h3>Designate your Exercise:</h3>
-            <div th:each="exercise : ${exercises}">
-                <input name="exercises" type="checkbox" th:value="${exercise.id}" />
-                <span th:text="${exercise.name}">Exercise</span><br/>
+            <div th:if="${exercises}">
+                <h3>Designate your Exercise:</h3>
+                <div th:each="exercise : ${exercises}">
+                    <input name="exercises" type="checkbox" th:value="${exercise.id}" />
+                    <span th:text="${exercise.name}">Exercise</span><br/>
+                </div>
             </div>
+            <div th:if="${exercises.isEmpty()}">
+                <p>There are no exercises to choose from!!</p>
+            </div>
+
         </div>
     </div>
     <div>

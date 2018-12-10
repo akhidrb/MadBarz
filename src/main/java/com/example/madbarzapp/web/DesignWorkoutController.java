@@ -7,17 +7,14 @@ import com.example.madbarzapp.models.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/workout")
+@RequestMapping("/")
 public class DesignWorkoutController {
 
     private final WorkoutRep workoutRep;
@@ -35,7 +32,7 @@ public class DesignWorkoutController {
         return new Workout();
     }
 
-    @GetMapping
+    @RequestMapping(value="/workout", method = RequestMethod.GET)
     public String showDesignForm(Model model) {
         List<Exercise> exerciseArrayList = new ArrayList<>();
         exerciseRep.findAll().forEach(exercise -> exerciseArrayList.add(exercise));
@@ -43,10 +40,18 @@ public class DesignWorkoutController {
         return "design-workout";
     }
 
-    @PostMapping
+    @RequestMapping(value="/workout", method = RequestMethod.POST)
     public String processDesign(Workout workout) {
         Workout saved = workoutRep.save(workout);
         return "redirect:/workout";
+    }
+
+    @RequestMapping(value="/", method = RequestMethod.GET)
+    public String displayWorkout(Model model) {
+        List<Workout> workouts = new ArrayList<>();
+        workoutRep.findAll().forEach(workout -> workouts.add(workout));
+        model.addAttribute("workouts", workouts);
+        return "home";
     }
 
 

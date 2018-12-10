@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MadBarz</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
 
@@ -11,6 +12,19 @@
     </div>
     <div>
         <a href="/workout">Add Workouts</a>
+    </div>
+
+    <div>
+        <h3>Workouts:</h3>
+        <div th:if="${workouts}">
+            <div th:each="workout : ${workouts}">
+                <span th:text="${workout.name}">Workout</span>
+                <br/>
+            </div>
+        </div>
+        <div th:if="${workouts.isEmpty()}">
+            <p>There are no workouts!!</p>
+        </div>
     </div>
 </body>
 </html>
