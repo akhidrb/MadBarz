@@ -1,6 +1,7 @@
 package com.example.madbarzapp.data;
 
 import com.example.madbarzapp.models.Exercise;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import java.util.List;
 @Repository
 public class CriteriaExerciseRep {
 
+    @Autowired
     private EntityManager em;
 
     public List<Exercise> findExercisesByName(String exerciseName) {
@@ -21,7 +23,7 @@ public class CriteriaExerciseRep {
         CriteriaQuery<Exercise> cq = cb.createQuery(Exercise.class);
 
         Root<Exercise> exercise = cq.from(Exercise.class);
-        Predicate exerciseNamePredicate = cb.equal(exercise.get("name"), "%" + exerciseName + "%");
+        Predicate exerciseNamePredicate = cb.like(exercise.get("name"), "%" + exerciseName + "%");
         cq.where(exerciseNamePredicate);
 
         TypedQuery<Exercise> query = em.createQuery(cq);

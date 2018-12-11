@@ -26,6 +26,14 @@
 
         </div>
     </div>
+    <div class="grid">
+        <div class="exercises-group">
+            <h3>Designate your Exercise:</h3>
+            <div th:each="exercise : ${exByName}">
+                <span th:text="${exercise.name}">Exercise</span><br/>
+            </div>
+        </div>
+    </div>
     <div>
         <div>
             <h3>Rounds:</h3>
