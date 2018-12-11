@@ -1,6 +1,6 @@
-delete from Workout_Data;
-delete from Workout_Exercise;
-delete from Exercise_Musclegroup;
+-- delete from Workout_Data;
+-- delete from Workout_Exercise;
+-- delete from Exercise_Musclegroup;
 delete from Workout;
 delete from Musclegroup;
 delete from Exercise;

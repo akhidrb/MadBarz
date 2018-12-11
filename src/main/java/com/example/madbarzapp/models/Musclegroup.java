@@ -3,6 +3,7 @@ package com.example.madbarzapp.models;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
@@ -10,11 +11,23 @@ import javax.persistence.Id;
 public class Musclegroup {
 
 	@Id
-	private final Long id;
-	private final String name;
+	@GeneratedValue
+	private Long id;
+	private String name;
+
+	public Musclegroup() {
+	}
 
 	public Musclegroup(Long id, String name) {
 		this.id = id;
+		this.name = name;
+	}
+
+	public Musclegroup(String name) {
+		this.name = name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
