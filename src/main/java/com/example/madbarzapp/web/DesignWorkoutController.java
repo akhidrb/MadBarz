@@ -1,5 +1,6 @@
 package com.example.madbarzapp.web;
 
+import com.example.madbarzapp.data.CriteriaExerciseRep;
 import com.example.madbarzapp.data.ExerciseRep;
 import com.example.madbarzapp.data.WorkoutRep;
 import com.example.madbarzapp.models.Exercise;
@@ -19,12 +20,15 @@ public class DesignWorkoutController {
 
     private final WorkoutRep workoutRep;
     private final ExerciseRep exerciseRep;
+    private CriteriaExerciseRep criteriaExerciseRep;
 
     @Autowired
     public DesignWorkoutController(WorkoutRep workoutRep,
-                                   ExerciseRep exerciseRep) {
+                                   ExerciseRep exerciseRep,
+                                   CriteriaExerciseRep criteriaExerciseRep) {
         this.workoutRep = workoutRep;
         this.exerciseRep = exerciseRep;
+        this.criteriaExerciseRep = criteriaExerciseRep;
     }
 
     @ModelAttribute(name = "workout")
@@ -37,6 +41,11 @@ public class DesignWorkoutController {
         List<Exercise> exerciseArrayList = new ArrayList<>();
         exerciseRep.findAll().forEach(exercise -> exerciseArrayList.add(exercise));
         model.addAttribute("exercises", exerciseArrayList.stream().collect(Collectors.toList()));
+
+        List<Exercise> exerciseList = new ArrayList<>();
+        criteriaExerciseRep.findExercisesByName("up")
+                .forEach(exercise -> exerciseList.add(exercise));
+        model.addAttribute("exByName", exerciseList.stream().collect(Collectors.toList()));
         return "design-workout";
     }
 
