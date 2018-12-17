@@ -72,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(encoder());
 
-        
+
 //        auth
 //                .inMemoryAuthentication()
 //                .withUser("buzz")
