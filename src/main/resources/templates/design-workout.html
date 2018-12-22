@@ -9,7 +9,7 @@
 <body>
 <h1>Design your Workout!</h1>
 
-<form method="POST" th:object="${workout}">
+<form method="POST" th:object="${workout}" th:action="@{/workout}">
 
     <div class="grid">
         <div class="exercises-group">

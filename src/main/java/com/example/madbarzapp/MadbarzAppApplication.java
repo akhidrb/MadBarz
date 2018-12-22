@@ -32,6 +32,8 @@ public class MadbarzAppApplication {
 				repoMuscle.save(new Musclegroup("core"));
 
 				userRep.save(new User("user", passwordEncoder.encode("user"), "User"));
+				userRep.save(new User("user1", passwordEncoder.encode("user"), "User 1"));
+				userRep.save(new User("user2", passwordEncoder.encode("user"), "User 2"));
 			}
 		};
 	}

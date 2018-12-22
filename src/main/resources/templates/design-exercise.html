@@ -9,7 +9,7 @@
 <body>
 <h1>Design your Exercise!</h1>
 
-<form method="POST" th:object="${exercise}">
+<form method="POST" th:object="${exercise}" th:action="@{/exercise}">
 
     <div>
         <h3>Hello <span th:text="${user.fullname}" /></h3>

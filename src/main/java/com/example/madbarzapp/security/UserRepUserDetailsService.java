@@ -3,18 +3,23 @@ package com.example.madbarzapp.security;
 import com.example.madbarzapp.data.UserRep;
 import com.example.madbarzapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.
+        UserDetailsService;
+import org.springframework.security.core.userdetails.
+        UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserRepositoryUserDetailsService implements UserDetailsService {
+@Primary
+public class UserRepUserDetailsService
+        implements UserDetailsService {
 
     private UserRep userRepo;
 
     @Autowired
-    public UserRepositoryUserDetailsService(UserRep userRepo) {
+    public UserRepUserDetailsService(UserRep userRepo) {
         this.userRepo = userRepo;
     }
 
