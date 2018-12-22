@@ -11,6 +11,10 @@
 
 <form method="POST" th:object="${exercise}">
 
+    <div>
+        <h3>Hello <span th:text="${user.fullname}" /></h3>
+    </div>
+
     <div class="grid">
         <div class="musclegroups-group" id="wraps">
             <h3>Designate your Muscle Groups:</h3>
