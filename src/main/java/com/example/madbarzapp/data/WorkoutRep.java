@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface WorkoutRep extends CrudRepository<Workout, Long> {
 
+    Iterable<Workout> findAllByUserId(String userId);
+
 }

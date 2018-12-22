@@ -16,6 +16,7 @@ public class Workout {
 	@Id
 	@GeneratedValue
 	private Long id;
+	private String userId;
 	private String name;
 	private Long rounds;
 	private Long exerciseRest;
@@ -27,7 +28,7 @@ public class Workout {
 	public Workout() {
 	}
 
-	public Workout(Long id, String name, Long rounds,
+	public Workout(Long id, String userId, String name, Long rounds,
 				   Long exerciseRest, Long setRest) {
 		this.id = id;
 		this.name = name;
@@ -42,6 +43,14 @@ public class Workout {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getName() {
