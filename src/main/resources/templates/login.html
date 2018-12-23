@@ -8,6 +8,9 @@
 <body>
 <h1>Login</h1>
 
+<p>New here? Click
+    <a th:href="@{/register}">here</a> to register.</p>
+
 <form method="POST" th:action="@{/login}" id="loginForm">
     <!-- end::thAction[] -->
     <label for="username">Username: </label>
