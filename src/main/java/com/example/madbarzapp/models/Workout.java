@@ -1,16 +1,13 @@
 package com.example.madbarzapp.models;
 
-import java.util.List;
-
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
+@Table(name = "Workout")
 public class Workout {
 
 	@Id
